@@ -5,7 +5,7 @@ export default class Auth {
 		this.history = history
 		this.auth0 = new auth0.WebAuth({
 			domain: process.env.REACT_APP_AUTH0_DOMAIN,
-			clientId: process.env.REACT_APP_AUTH0_CLIENT_ID,
+			clientID: process.env.REACT_APP_AUTH0_CLIENT_ID,
 			redirectUri: process.env.REACT_APP_AUTH0_CALLBACK_URL,
 			responseType: 'token id_token',
 			scope: 'openid profile email'
@@ -13,6 +13,6 @@ export default class Auth {
 	}
 
 	login = () => {
-		auth0.authorize()
+		this.auth0.authorize()
 	}
 }
