@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Profile from './pages/Profile'
 import Navbar from './components/Navbar'
 import Auth from './Auth/Auth'
+import Callback from './pages/Callback'
 
 const App = ({ history }) => {
 	const [auth0, setAuth0] = useState(new Auth(history))
@@ -18,6 +19,10 @@ const App = ({ history }) => {
 					render={props => <Home auth={auth0} {...props} />}
 				/>
 				<Route path="/profile" component={Profile} />
+				<Route
+					path="/callback"
+					render={props => <Callback auth={auth0} {...props} />}
+				/>
 			</div>
 		</>
 	)
