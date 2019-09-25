@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
 import Navbar from './components/Navbar'
@@ -18,7 +18,16 @@ const App = ({ history }) => {
 					exact
 					render={props => <Home auth={auth0} {...props} />}
 				/>
-				<Route path="/profile" component={Profile} />
+				<Route
+					path="/profile"
+					render={props =>
+						auth0.isAuthenticated() ? (
+							<Profile auth={auth0} {...props} />
+						) : (
+							<Redirect to="/" />
+						)
+					}
+				/>
 				<Route
 					path="/callback"
 					render={props => <Callback auth={auth0} {...props} />}
