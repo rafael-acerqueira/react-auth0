@@ -11,7 +11,7 @@ const App = ({ history }) => {
 
 	return (
 		<>
-			<Navbar />
+			<Navbar auth={auth0} />
 			<div className="body">
 				<Route
 					path="/"
