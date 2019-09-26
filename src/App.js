@@ -5,6 +5,7 @@ import Profile from './pages/Profile'
 import Navbar from './components/Navbar'
 import Auth from './Auth/Auth'
 import Callback from './pages/Callback'
+import Public from './pages/Public'
 
 const App = ({ history }) => {
 	const [auth0, setAuth0] = useState(new Auth(history))
@@ -32,6 +33,8 @@ const App = ({ history }) => {
 					path="/callback"
 					render={props => <Callback auth={auth0} {...props} />}
 				/>
+
+				<Route path="/public" component={Public} />
 			</div>
 		</>
 	)
