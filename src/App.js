@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import Auth from './Auth/Auth'
 import Callback from './pages/Callback'
 import Public from './pages/Public'
+import Private from './pages/Private'
 
 const App = ({ history }) => {
 	const [auth0, setAuth0] = useState(new Auth(history))
@@ -35,6 +36,16 @@ const App = ({ history }) => {
 				/>
 
 				<Route path="/public" component={Public} />
+				<Route
+					path="/private"
+					render={props =>
+						auth0.isAuthenticated() ? (
+							<Private auth={auth0} {...props} />
+						) : (
+							<Redirect to="/" />
+						)
+					}
+				/>
 			</div>
 		</>
 	)
